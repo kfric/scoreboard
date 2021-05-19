@@ -11,6 +11,10 @@ function main() {
   let moveCounter = 0
   function updateScoreAdd() {
     moveCounter++
+    if (moveCounter > 21) {
+      console.log('YOU WIN!')
+      return
+    }
     const addScore = document.querySelector('.team1 h3')
     addScore.textContent = moveCounter
   }
@@ -19,6 +23,10 @@ function main() {
   moveCounter = 0
   function updateScoreSub() {
     moveCounter--
+    if (moveCounter < 0) {
+      console.log('NO ZEROS ALLOWED')
+      return
+    }
     const subScore = document.querySelector('.team1 h3')
     subScore.textContent = moveCounter
   }
