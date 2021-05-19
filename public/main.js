@@ -9,28 +9,37 @@ function main() {
     .addEventListener('input', updateTeam1Name)
 
   let moveCounter = 0
+  const team1Name = document.querySelector('.team1 h2')
   function updateScoreAdd() {
-    moveCounter++
-    if (moveCounter > 21) {
-      console.log('YOU WIN!')
+    if (moveCounter >= 21) {
+      window.alert(`${team1Name.textContent} WINS!`)
       return
     }
-    const addScore = document.querySelector('.team1 h3')
-    addScore.textContent = moveCounter
+    moveCounter++
+    const teamOneScore = document.querySelector('.team1 h3')
+    teamOneScore.textContent = moveCounter
   }
   document.querySelector('.add').addEventListener('click', updateScoreAdd)
 
   moveCounter = 0
   function updateScoreSub() {
-    moveCounter--
-    if (moveCounter < 0) {
-      console.log('NO ZEROS ALLOWED')
+    if (moveCounter <= 0) {
+      window.alert('NO SUCH THING AS A NEGATIVE SCORE...')
       return
     }
-    const subScore = document.querySelector('.team1 h3')
-    subScore.textContent = moveCounter
+    moveCounter--
+    const teamOneScore = document.querySelector('.team1 h3')
+    teamOneScore.textContent = moveCounter
   }
   document.querySelector('.subtract').addEventListener('click', updateScoreSub)
+
+  // reset button
+  const resetScore = 0
+  function resetScores() {
+    teamOneScore = document.querySelector('.team1 h3')
+    teamOneScore.textContent = resetScore
+  }
+  document.querySelector('footer').addEventListener('click', resetScores)
 }
 
 document.addEventListener('DOMContentLoaded', main)
